@@ -1,26 +1,28 @@
 import * as os from 'os';
 import * as path from 'path';
+import * as fsPromises from 'fs/promises';
 
-class Settings {
+const appname = 'knowledge';
+const apphome = path.resolve(os.homedir() || '', appname);
 
-  static userhome = os.homedir();
-  static pathname = 'knowledge';
-  static filename = 'settings.json';
+export const filename = 'settings.json';
+export const filepath = path.resolve(apphome, filename);
 
+export interface AppSettings {
   repository: string;
-
-  constructor() {
-    this.repository = path.resolve(Settings.userhome, Settings.pathname);
-  }
-
-  public load(): void {
-
-  }
-
-  public save(): void {
-
-  }
-
 }
 
-export { Settings }
+export const DefaultAppSettings: AppSettings = {
+  repository: path.resolve(apphome, 'data')
+}
+
+export function LoadAppSettings() {
+  fsPromises.readFile(filepath)
+    .then((data) => {
+      return { ...DefaultAppSettings, ...JSON.parse(data.toString()) }
+    })
+}
+
+// export function GetAppSettings() {
+//   let appSettings: AppSettings = DefaultAppSettings;
+// }
