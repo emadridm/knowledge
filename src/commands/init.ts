@@ -1,25 +1,25 @@
-import { Command, flags } from '@oclif/command'
+import { Command, flags } from '@oclif/command';
+import { AppSettings, GetAppSettings } from './../settings';
+import * as util from 'util';
 
 export default class Init extends Command {
-  static description = 'configure your knowledge database'
+  static description = 'init app settings'
 
   static flags = {
-    help: flags.help({ char: 'h' }),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({ char: 'n', description: 'name to print' }),
-    // flag with no value (-f, --force)
-    force: flags.boolean({ char: 'f' }),
+    help: flags.help({ char: 'h' })
   }
 
-  static args = [{ name: 'file' }]
-
   async run() {
-    const { args, flags } = this.parse(Init)
-
-    const name = flags.name ?? 'world'
-    this.log(`hello ${name} from /home/enrique/Projects/knowledge/src/commands/init.ts`)
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`)
+    try {
+      console.log('get app settings ...')
+      let appSettings: AppSettings = await GetAppSettings();
+      console.log(util.inspect(appSettings, {
+        showHidden: false,
+        depth: null,
+        colors: true
+      }));
+    } catch {
+      console.log('error configuring knowledge!')
     }
   }
 }
