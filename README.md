@@ -28,9 +28,26 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`knowledge email [FILE]`](#knowledge-email-file)
 * [`knowledge hello [FILE]`](#knowledge-hello-file)
 * [`knowledge help [COMMAND]`](#knowledge-help-command)
-* [`knowledge init [FILE]`](#knowledge-init-file)
+* [`knowledge init`](#knowledge-init)
+
+## `knowledge email [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ knowledge email [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/email.ts](https://github.com/emadridm/knowledge/blob/v1.0.0/src/commands/email.ts)_
 
 ## `knowledge hello [FILE]`
 
@@ -69,18 +86,16 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 
-## `knowledge init [FILE]`
+## `knowledge init`
 
-describe the command here
+init app settings
 
 ```
 USAGE
-  $ knowledge init [FILE]
+  $ knowledge init
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help  show CLI help
 ```
 
 _See code: [src/commands/init.ts](https://github.com/emadridm/knowledge/blob/v1.0.0/src/commands/init.ts)_
