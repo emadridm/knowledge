@@ -11,12 +11,12 @@ export const filepath = path.resolve(apphome, filename);
 
 export interface AppSettings {
   repository: string,
-  accounts: string
+  muahome: string
 }
 
 export const DefaultAppSettings: AppSettings = {
   repository: path.resolve(apphome, 'data'),
-  accounts: path.resolve(apphome, 'accounts')
+  muahome: path.resolve(apphome, 'email')
 }
 
 async function LoadAppSettings(): Promise<AppSettings> {
